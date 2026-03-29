@@ -1,13 +1,51 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public static void main(String[] args) {
+  Scanner sc = new Scanner(System.in);
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
-    }
+  // Task 1
+  System.out.println(sumOfSquares(4));
+
+  // Task 2
+  int[] arr = {1, 2, 3, 4};
+  System.out.println(sumArray(arr, arr.length));
+
+  // Task 3
+  System.out.println(powerSum(4, 3));
+
+  // Task 4
+  System.out.println("\nTask 4: Reverse input");
+  int n = sc.nextInt();
+  reversePrint(n, sc);
+
+  sc.close();
+}
+
+// 1 Time Complexity: O(n)
+
+static int sumOfSquares(int n) {
+  if (n == 0) return 0; // base case
+  return n * n + sumOfSquares(n - 1);
+}
+
+// 2 Time Complexity: O(n)
+
+static int sumArray(int[] arr, int n) {
+  if (n == 0) return 0;
+  return arr[n - 1] + sumArray(arr, n - 1);
+}
+
+// 3 Time Complexity: O(n)
+
+static int powerSum(int b, int n) {
+  if (n == 0) return 1; // b^0 = 1
+  return (int)Math.pow(b, n) + powerSum(b, n - 1);
+}
+
+// 4 Time Complexity: O(n)
+
+static void reversePrint(int n, Scanner sc) {
+  if (n == 0) return; // base case
+
+  int x = sc.nextInt(); // read number
+  reversePrint(n - 1, sc); // recursive call
+  System.out.print(x + " "); // print after recursion
 }
